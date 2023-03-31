@@ -4,7 +4,6 @@
     that:
       - application_name is defined
       - docker_network_name is defined
-      - domain_name is defined
       - cloudwatch_region is defined
       - cloudwatch_log_group is defined
 
@@ -15,9 +14,10 @@
 - name: Create database container
   docker_container:
     name: "{{ application_name }}"
-    image: "google/cadvisor:latest"
+    image: "gcr.io/cadvisor/cadvisor:v0.47.0"
     restart_policy: "always"
     cleanup: true
+    privileged: true
     exposed_ports:
       - "8080"
     networks:
@@ -33,3 +33,6 @@
       - /sys:/sys:ro
       - /var/lib/docker:/var/lib/docker:ro
       - /dev/disk:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+
