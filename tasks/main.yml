@@ -19,7 +19,7 @@
     cleanup: true
     privileged: true
     exposed_ports:
-      - "8080"
+      - "8080:8080"
     networks:
       - name: "{{ docker_network_name }}"
     log_driver: "awslogs"
