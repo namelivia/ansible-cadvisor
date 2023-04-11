@@ -26,7 +26,7 @@
     log_options:
       awslogs-region: "{{ cloudwatch_region }}"
       awslogs-group: "{{ cloudwatch_log_group }}"
-      awslogs-stream: "{{ application_name }}"
+      awslogs-stream: "{{ application_name }}-{{ inventory_hostname }}"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
