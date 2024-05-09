@@ -33,3 +33,4 @@
       - /dev/disk:/dev/disk:ro
     devices:
       - /dev/kmsg
+    command: "--enable_load_reader=true"
