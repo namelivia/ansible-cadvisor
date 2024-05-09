@@ -3,12 +3,7 @@
   assert:
     that:
       - application_name is defined
-      - docker_network_name is defined
       - loki_url is defined
-
-- name: Create the dockernetwork
-  docker_network:
-    name: "{{ docker_network_name }}"
 
 - name: Create app container
   docker_container:
@@ -20,7 +15,7 @@
     ports:
       - 8080:8080
     networks:
-      - name: "{{ docker_network_name }}"
+      - name: "host"
     log_driver: "loki"
     log_options:
       loki-url: "{{ loki_url }}"
