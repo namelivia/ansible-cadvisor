@@ -28,4 +28,4 @@
       - /dev/disk:/dev/disk:ro
     devices:
       - /dev/kmsg
-    command: "--enable_load_reader=true --docker_only=true"
+    command: "--enable_load_reader={{ enable_load_reader }} --docker_only=true"
